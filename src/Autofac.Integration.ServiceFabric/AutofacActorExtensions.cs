@@ -24,6 +24,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 using Autofac.Builder;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
@@ -65,10 +66,13 @@ namespace Autofac.Integration.ServiceFabric
 
             registration.EnsureRegistrationIsInstancePerLifetimeScope();
 
-            builder.RegisterBuildCallback(
-                c => c.Resolve<IActorFactoryRegistration>().RegisterActorFactory<TActor>(
+            var creator = new ServiceFabricRegistrationCreator(c => c.Resolve<IActorFactoryRegistration>().RegisterActorFactory<TActor>(
                     c, stateManagerFactory, stateProvider, settings));
+            builder.RegisterInstance(creator);
 
+            // builder.RegisterBuildCallback(
+            //    c => c.Resolve<IActorFactoryRegistration>().RegisterActorFactory<TActor>(
+            //        c, stateManagerFactory, stateProvider, settings));
             return registration;
         }
     }
