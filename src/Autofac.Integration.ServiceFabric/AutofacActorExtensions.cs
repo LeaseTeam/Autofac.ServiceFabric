@@ -68,7 +68,8 @@ namespace Autofac.Integration.ServiceFabric
 
             var creator = new ServiceFabricRegistrationCreator(c => c.Resolve<IActorFactoryRegistration>().RegisterActorFactory<TActor>(
                     c, stateManagerFactory, stateProvider, settings));
-            builder.RegisterInstance(creator);
+            builder.RegisterInstance(creator)
+                .As<IServiceFabricRegistrationCreator>();
 
             // builder.RegisterBuildCallback(
             //    c => c.Resolve<IActorFactoryRegistration>().RegisterActorFactory<TActor>(

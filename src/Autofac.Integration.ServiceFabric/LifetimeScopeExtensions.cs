@@ -8,7 +8,7 @@ namespace Autofac.Integration.ServiceFabric
     {
         public static void CreateServiceFabricRegistrations(this ILifetimeScope scope)
         {
-            var creators = scope.Resolve<List<ServiceFabricRegistrationCreator>>();
+            var creators = scope.Resolve<IEnumerable<IServiceFabricRegistrationCreator>>();
             foreach (var creator in creators)
             {
                 creator.ExecuteCreator(scope);

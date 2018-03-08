@@ -54,7 +54,8 @@ namespace Autofac.Integration.ServiceFabric
             var creator = new ServiceFabricRegistrationCreator(c =>
                 c.Resolve<IStatefulServiceFactoryRegistration>()
                     .RegisterStatefulServiceFactory<TService>(c, serviceTypeName));
-            builder.RegisterInstance(creator);
+            builder.RegisterInstance(creator)
+                .As<IServiceFabricRegistrationCreator>();
 
             // builder.RegisterBuildCallback(c =>
             //    c.Resolve<IStatefulServiceFactoryRegistration>()
@@ -82,7 +83,8 @@ namespace Autofac.Integration.ServiceFabric
             var creator = new ServiceFabricRegistrationCreator(c =>
                 c.Resolve<IStatelessServiceFactoryRegistration>()
                     .RegisterStatelessServiceFactory<TService>(c, serviceTypeName));
-            builder.RegisterInstance(creator);
+            builder.RegisterInstance(creator)
+                .As<IServiceFabricRegistrationCreator>();
 
             // builder.RegisterBuildCallback(c =>
             //    c.Resolve<IStatelessServiceFactoryRegistration>()

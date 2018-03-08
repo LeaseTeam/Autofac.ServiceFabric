@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Autofac.Integration.ServiceFabric
 {
-    internal class ServiceFabricRegistrationCreator
+    internal class ServiceFabricRegistrationCreator : IServiceFabricRegistrationCreator
     {
         private readonly Action<ILifetimeScope> _creator;
 
