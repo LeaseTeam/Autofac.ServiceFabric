@@ -51,10 +51,15 @@ namespace Autofac.Integration.ServiceFabric
         {
             var registration = RegisterServiceWithContainer<TService>(builder, serviceTypeName);
 
-            builder.RegisterBuildCallback(c =>
+            var creator = new ServiceFabricRegistrationCreator(c =>
                 c.Resolve<IStatefulServiceFactoryRegistration>()
                     .RegisterStatefulServiceFactory<TService>(c, serviceTypeName));
+            builder.RegisterInstance(creator)
+                .As<IServiceFabricRegistrationCreator>();
 
+            // builder.RegisterBuildCallback(c =>
+            //    c.Resolve<IStatefulServiceFactoryRegistration>()
+            //        .RegisterStatefulServiceFactory<TService>(c, serviceTypeName));
             return registration;
         }
 
@@ -75,10 +80,15 @@ namespace Autofac.Integration.ServiceFabric
         {
             var registration = RegisterServiceWithContainer<TService>(builder, serviceTypeName);
 
-            builder.RegisterBuildCallback(c =>
+            var creator = new ServiceFabricRegistrationCreator(c =>
                 c.Resolve<IStatelessServiceFactoryRegistration>()
                     .RegisterStatelessServiceFactory<TService>(c, serviceTypeName));
+            builder.RegisterInstance(creator)
+                .As<IServiceFabricRegistrationCreator>();
 
+            // builder.RegisterBuildCallback(c =>
+            //    c.Resolve<IStatelessServiceFactoryRegistration>()
+            //        .RegisterStatelessServiceFactory<TService>(c, serviceTypeName));
             return registration;
         }
 
