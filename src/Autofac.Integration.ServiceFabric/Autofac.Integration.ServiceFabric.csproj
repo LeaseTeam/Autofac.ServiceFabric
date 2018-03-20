@@ -28,16 +28,16 @@
     <Company>Autofac</Company>
     <Product>Autofac</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.1-preview</Version>
+    <Version>2.0.4-preview</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />
     <PackageReference Include="Autofac.Extras.DynamicProxy" Version="4.4.0" />
-    <PackageReference Include="Microsoft.ServiceFabric" Version="6.1.467" />
-    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="3.0.467" />
-    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.0.467" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.467" />
+    <PackageReference Include="Microsoft.ServiceFabric" Version="6.1.472" />
+    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="3.0.472" />
+    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.0.472" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.472" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.6.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
